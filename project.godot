@@ -27,6 +27,11 @@ window/stretch/mode="viewport"
 
 enabled=PackedStringArray()
 
+[gui]
+
+theme/default_font_antialiasing=2
+theme/default_font_hinting=2
+
 [input]
 
 move_left={

@@ -1,9 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://bbq2738yt036t"]
+[gd_scene load_steps=5 format=3 uid="uid://bbq2738yt036t"]
 
 [ext_resource type="PackedScene" uid="uid://b6s4rofjfv7rr" path="res://scenes/player/player.tscn" id="1_gavi6"]
 [ext_resource type="TileSet" uid="uid://bi1cr8sj75vwr" path="res://resources/tileset.tres" id="1_osvoo"]
+[ext_resource type="PackedScene" uid="uid://cfywpck6schl3" path="res://scenes/game_camera/game_camera.tscn" id="1_v5cwt"]
+[ext_resource type="PackedScene" uid="uid://sw7fmft0o4po" path="res://scenes/basic_enemy/basic_enemy.tscn" id="4_mh0vw"]
 
 [node name="Main" type="Node"]
+
+[node name="GameCamera" parent="." instance=ExtResource("1_v5cwt")]
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource("1_osvoo")
@@ -12,3 +16,6 @@ layer_0/tile_data = PackedInt32Array(1441831, 0, 4, 1376295, 0, 4, 1310759, 6553
 
 [node name="Player" parent="." instance=ExtResource("1_gavi6")]
 position = Vector2(24, 20)
+
+[node name="BasicEnemy" parent="." instance=ExtResource("4_mh0vw")]
+position = Vector2(337, 126)
