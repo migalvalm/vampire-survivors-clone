@@ -3,9 +3,9 @@ extends CharacterBody2D
 const MAX_SPEED = 75
 
 func _ready() -> void:
-	pass
+	$Hitbox.area_entered.connect(on_area_entered)
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	var direction = get_direction_to_player()
 	velocity = direction * MAX_SPEED
 	move_and_slide()
@@ -17,4 +17,7 @@ func get_direction_to_player() -> Vector2:
 		return (player_node.global_position - global_position).normalized()
 	
 	return Vector2.ZERO
+	
+func on_area_entered(_area: Area2D) -> void:
+	queue_free()
 	

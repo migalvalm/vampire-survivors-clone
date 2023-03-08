@@ -3,7 +3,7 @@ class_name Player
 
 const MAX_SPEED = 200
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	var direction = get_movement_vector().normalized()
 	
 	velocity = direction * MAX_SPEED
