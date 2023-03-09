@@ -1,0 +1,82 @@
+[gd_scene load_steps=10 format=3 uid="uid://bk2lpbua3qjj4"]
+
+[ext_resource type="Texture2D" uid="uid://d2d485t6rdta2" path="res://scenes/game_object/player/player.png" id="1_v54y6"]
+[ext_resource type="Script" path="res://scenes/game_object/player/player.gd" id="1_x14sp"]
+[ext_resource type="PackedScene" uid="uid://bnh7burb0h2aa" path="res://scenes/ability/sword_ability_controller/sword_ability_controller.tscn" id="2_5r485"]
+[ext_resource type="PackedScene" uid="uid://dmegso3kjij1s" path="res://scenes/component/health_component.tscn" id="4_8g6dd"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ypybo"]
+bg_color = Color(0.247059, 0.14902, 0.192157, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5crne"]
+bg_color = Color(0.262745, 0.882353, 0.701961, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.247059, 0.14902, 0.192157, 1)
+corner_detail = 18
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pnbmn"]
+radius = 32.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wo6bm"]
+radius = 7.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1b1s0"]
+radius = 5.0
+
+[node name="Player" type="CharacterBody2D" groups=["player"]]
+collision_layer = 0
+motion_mode = 1
+script = ExtResource("1_x14sp")
+
+[node name="HealthComponent" parent="." instance=ExtResource("4_8g6dd")]
+
+[node name="AbilityManager" type="Node" parent="."]
+
+[node name="SwordAbilityController" parent="AbilityManager" instance=ExtResource("2_5r485")]
+
+[node name="DamageIntervalTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+custom_minimum_size = Vector2(32, 6)
+offset_left = -16.0
+offset_top = -22.0
+offset_right = 16.0
+offset_bottom = -16.0
+pivot_offset = Vector2(16, 3)
+theme_override_styles/background = SubResource("StyleBoxFlat_ypybo")
+theme_override_styles/fill = SubResource("StyleBoxFlat_5crne")
+max_value = 1.0
+value = 0.5
+show_percentage = false
+
+[node name="PickupArea" type="Area2D" parent="."]
+visible = false
+position = Vector2(0, -5)
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PickupArea"]
+shape = SubResource("CircleShape2D_pnbmn")
+
+[node name="Texture" type="Sprite2D" parent="."]
+texture = ExtResource("1_v54y6")
+offset = Vector2(0, -8)
+
+[node name="CollisionArea2D" type="Area2D" parent="."]
+visible = false
+position = Vector2(0, -7)
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionArea2D"]
+shape = SubResource("CircleShape2D_wo6bm")
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(0, -5)
+shape = SubResource("CircleShape2D_1b1s0")

@@ -1,6 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://c530jkmfjdqdc"]
+[gd_scene load_steps=8 format=3 uid="uid://c530jkmfjdqdc"]
 
+[ext_resource type="Script" path="res://scenes/ability/sword_ability/sword_ability.gd" id="1_pfo5t"]
 [ext_resource type="Texture2D" uid="uid://b4mbhr5p0p57s" path="res://scenes/ability/sword_ability/sword.png" id="1_wcmd4"]
+[ext_resource type="PackedScene" uid="uid://bdfm633tkddth" path="res://scenes/component/hitbox_component.tscn" id="2_x5lrb"]
 
 [sub_resource type="Animation" id="Animation_2xi5e"]
 length = 0.001
@@ -31,7 +33,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Hitbox/Collision:disabled")
+tracks/2/path = NodePath("HitboxComponent/Collision:disabled")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -86,7 +88,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Hitbox/Collision:disabled")
+tracks/3/path = NodePath("HitboxComponent/Collision:disabled")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -102,10 +104,11 @@ _data = {
 "swing": SubResource("Animation_2ul1a")
 }
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_qlwyl"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jeoi0"]
 size = Vector2(32, 32)
 
 [node name="SwordAbility" type="Node2D"]
+script = ExtResource("1_pfo5t")
 
 [node name="Texture" type="Sprite2D" parent="."]
 texture = ExtResource("1_wcmd4")
@@ -117,10 +120,8 @@ libraries = {
 "": SubResource("AnimationLibrary_ysa1j")
 }
 
-[node name="Hitbox" type="Area2D" parent="."]
-collision_layer = 4
-collision_mask = 0
+[node name="HitboxComponent" parent="." instance=ExtResource("2_x5lrb")]
 
-[node name="Collision" type="CollisionShape2D" parent="Hitbox"]
+[node name="Collision" type="CollisionShape2D" parent="HitboxComponent"]
 position = Vector2(16, 0)
-shape = SubResource("RectangleShape2D_qlwyl")
+shape = SubResource("RectangleShape2D_jeoi0")

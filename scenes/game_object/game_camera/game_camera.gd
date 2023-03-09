@@ -1,6 +1,6 @@
 extends Camera2D
 
-const SMOOTHNESS = 10
+const SMOOTHNESS = 20
 var target_position = Vector2.ZERO
 
 func _ready() -> void:

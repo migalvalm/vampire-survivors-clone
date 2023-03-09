@@ -1,9 +1,8 @@
 extends CharacterBody2D
 
-const MAX_SPEED = 75
+const MAX_SPEED = 40
 
-func _ready() -> void:
-	$Hitbox.area_entered.connect(on_area_entered)
+@onready var health_component: HealthComponent = $HealthComponent
 
 func _process(_delta: float) -> void:
 	var direction = get_direction_to_player()
@@ -17,7 +16,3 @@ func get_direction_to_player() -> Vector2:
 		return (player_node.global_position - global_position).normalized()
 	
 	return Vector2.ZERO
-	
-func on_area_entered(_area: Area2D) -> void:
-	queue_free()
-	
