@@ -24,7 +24,6 @@ func tween_method(rotations: float) -> void:
 	var current_radius = percent * MAX_RADIUS
 	var current_direction = base_rotation.rotated(rotations * TAU)
 	
-	var root_position = Vector2.ZERO
 	var player = get_tree().get_first_node_in_group('player')
 	
 	if player == null: return
