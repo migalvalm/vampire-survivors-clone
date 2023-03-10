@@ -1,9 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://cgyjkwsg2fxo6"]
+[gd_scene load_steps=3 format=3 uid="uid://cgyjkwsg2fxo6"]
 
 [ext_resource type="Script" path="res://scenes/ability/axe_ability_controller/axe_ability_controller.gd" id="1_havoi"]
+[ext_resource type="PackedScene" uid="uid://dpatweb5kyp0j" path="res://scenes/ability/axe_ability/axe_ability.tscn" id="2_kukm5"]
 
 [node name="AxeAbilityController" type="Node"]
 script = ExtResource("1_havoi")
+axe_ability_scene = ExtResource("2_kukm5")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 2.0
