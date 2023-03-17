@@ -1,10 +1,41 @@
-[gd_scene load_steps=11 format=3 uid="uid://co2t4lal7lfr5"]
+[gd_scene load_steps=16 format=3 uid="uid://co2t4lal7lfr5"]
 
 [ext_resource type="Texture2D" uid="uid://dq4apm2yeomim" path="res://scenes/game_object/basic_enemy/basic_enemy.png" id="1_6s0dx"]
 [ext_resource type="Script" path="res://scenes/game_object/basic_enemy/basic_enemy.gd" id="1_huj3o"]
 [ext_resource type="PackedScene" uid="uid://dmegso3kjij1s" path="res://scenes/component/health_component.tscn" id="2_sliiy"]
 [ext_resource type="PackedScene" uid="uid://monloi3v6fr6" path="res://scenes/component/vial_drop_component.tscn" id="3_3hkfu"]
+[ext_resource type="PackedScene" uid="uid://cf7bhpjr84lm5" path="res://scenes/component/death_component.tscn" id="4_dd0ts"]
+[ext_resource type="PackedScene" uid="uid://ch0udsxsqb14i" path="res://scenes/component/velocity_component.tscn" id="4_jyghh"]
 [ext_resource type="PackedScene" uid="uid://7jwo8f2bjjf8" path="res://scenes/component/hurtbox_component.tscn" id="4_nkced"]
+[ext_resource type="PackedScene" uid="uid://dc7qpjp7vnymr" path="res://scenes/component/hit_flash_component.tscn" id="5_tc30p"]
+[ext_resource type="Shader" path="res://scenes/component/hit_flash_component.gdshader" id="6_quhxv"]
+
+[sub_resource type="Animation" id="Animation_uqsqt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visuals/Texture:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Visuals/Texture:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
 
 [sub_resource type="Animation" id="Animation_5xe3m"]
 resource_name = "walk"
@@ -35,38 +66,16 @@ tracks/1/keys = {
 "values": [0.174533, -0.174533, 0.174533, -0.174533]
 }
 
-[sub_resource type="Animation" id="Animation_uqsqt"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Visuals/Texture:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Visuals/Texture:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_whvla"]
 _data = {
 "RESET": SubResource("Animation_uqsqt"),
 "walk": SubResource("Animation_5xe3m")
 }
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_x78qs"]
+resource_local_to_scene = true
+shader = ExtResource("6_quhxv")
+shader_parameter/lerp_percent = 0.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6xtqi"]
 radius = 12.0
@@ -89,7 +98,19 @@ libraries = {
 [node name="HealthComponent" parent="." instance=ExtResource("2_sliiy")]
 
 [node name="VialDropComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("3_3hkfu")]
+drop_percent = 1.0
 health_component = NodePath("../HealthComponent")
+
+[node name="VelocityComponent" parent="." instance=ExtResource("4_jyghh")]
+
+[node name="HitFlashComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("5_tc30p")]
+health_component = NodePath("../HealthComponent")
+sprite = NodePath("../Visuals/Texture")
+hit_flash_material = SubResource("ShaderMaterial_x78qs")
+
+[node name="DeathComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("4_dd0ts")]
+health_component = NodePath("../HealthComponent")
+sprite = NodePath("../Visuals/Texture")
 
 [node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("4_nkced")]
 health_component = NodePath("../HealthComponent")

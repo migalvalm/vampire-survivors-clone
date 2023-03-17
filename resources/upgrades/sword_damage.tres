@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="AbilityUpgrade" load_steps=2 format=3 uid="uid://nak0brvkp0iq"]
+
+[ext_resource type="Script" path="res://resources/upgrades/ability_upgrade.gd" id="1_qow02"]
+
+[resource]
+script = ExtResource("1_qow02")
+id = "sword_damage"
+max_quantity = 0
+name = "Sword Damage"
+description = "Increases sword attack damage by 15%"

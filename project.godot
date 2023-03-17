@@ -38,6 +38,7 @@ enabled=PackedStringArray()
 
 [gui]
 
+theme/custom="res://resources/theme/theme.tres"
 theme/default_font_antialiasing=0
 theme/default_font_hinting=2
 
