@@ -128,15 +128,15 @@ vertical_alignment = 1
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="RestartButton" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer" instance=ExtResource("2_0g1dd")]
+[node name="ContinueButton" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer" instance=ExtResource("2_0g1dd")]
 unique_name_in_owner = true
 layout_mode = 2
-text = "Restart"
+text = "Continue"
 
 [node name="QuitButton" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer" instance=ExtResource("2_0g1dd")]
 unique_name_in_owner = true
 layout_mode = 2
-text = "Quit
+text = "Quit to Menu
 "
 
 [node name="DefeatStreamPlayer" type="AudioStreamPlayer" parent="."]

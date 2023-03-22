@@ -9,7 +9,13 @@ func _ready():
 	(health_component as HealthComponent).died.connect(on_died)
 
 func on_died() -> void:
-	if randf() > drop_percent: return
+	var adjusted_drop_percent = drop_percent
+	var experience_gain_upgrade_count = MetaProgression.get_upgrade_count('experience_gain')
+	
+	if experience_gain_upgrade_count > 0:
+		adjusted_drop_percent += .1 * experience_gain_upgrade_count
+	
+	if randf() > adjusted_drop_percent: return
 	if vial_scene == null: return
 	if not owner is Node2D: return
 	

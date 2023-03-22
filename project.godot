@@ -12,14 +12,23 @@ config_version=5
 
 config/name="2DSurvivorsCourse"
 run/main_scene="res://scenes/ui/main_menu.tscn"
+config/use_custom_user_dir=true
+config/custom_user_dir_name="DungeonSurvival"
 config/features=PackedStringArray("4.0", "Forward Plus")
+boot_splash/bg_color=Color(0.247059, 0.14902, 0.192157, 1)
+boot_splash/image="res://icon.png"
+boot_splash/fullsize=false
+boot_splash/use_filter=false
 config/icon="res://icon.png"
+config/windows_native_icon="res://icon.ico"
+boot_splash/minimum_display_time=2
 
 [autoload]
 
 GameEvents="*res://scenes/auto_load/game_events.tscn"
 MusicPlayer="*res://scenes/auto_load/music_player.tscn"
 ScreenTransition="*res://scenes/auto_load/screen_transition.tscn"
+MetaProgression="*res://scenes/auto_load/meta_progression.tscn"
 
 [debug]
 
@@ -33,6 +42,8 @@ window/size/mode=3
 window/size/window_width_override=1920
 window/size/window_height_override=1080
 window/stretch/mode="canvas_items"
+window/size/mode.debug=3
+window/size/mode.web=0
 
 [editor_plugins]
 
