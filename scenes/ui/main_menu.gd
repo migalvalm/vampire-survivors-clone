@@ -10,9 +10,7 @@ func _ready() -> void:
 	%QuitButton.pressed.connect(on_quit_pressed)
 
 func on_play_pressed() -> void:
-	ScreenTransition.transition()
-	await ScreenTransition.transitioned_halfway
-	get_tree().change_scene_to_file('res://scenes/main/main.tscn')
+	ScreenTransition.transition_to_scene('res://scenes/main/main.tscn')
 
 func on_upgrade_pressed() -> void:
 	ScreenTransition.transition()
@@ -28,6 +26,8 @@ func on_options_pressed() -> void:
 	options_instance.back_pressed.connect(on_options_closed.bind(options_instance))
 
 func on_quit_pressed() -> void:
+	ScreenTransition.transition()
+	await ScreenTransition.transitioned_halfway
 	get_tree().quit()
 
 func on_options_closed(options_instance: Node) -> void:

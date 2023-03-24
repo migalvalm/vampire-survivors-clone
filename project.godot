@@ -32,6 +32,8 @@ MetaProgression="*res://scenes/auto_load/meta_progression.tscn"
 
 [debug]
 
+settings/stdout/print_fps=true
+settings/stdout/verbose_stdout=true
 gdscript/warnings/unused_parameter=0
 
 [display]
@@ -41,6 +43,7 @@ window/size/viewport_height=360
 window/size/mode=3
 window/size/window_width_override=1920
 window/size/window_height_override=1080
+window/vsync/vsync_mode=0
 window/stretch/mode="canvas_items"
 window/size/mode.debug=3
 window/size/mode.web=0

@@ -74,10 +74,7 @@ func on_options_pressed() -> void:
 	options_menu_instance.back_pressed.connect(on_options_back_pressed.bind(options_menu_instance))
 
 func on_quit_pressed() -> void:
-	ScreenTransition.transition()
-	await ScreenTransition.transitioned_halfway
-	get_tree().paused = false
-	get_tree().change_scene_to_file('res://scenes/ui/main_menu.tscn')
+	ScreenTransition.transition_to_scene('res://scenes/ui/main_menu.tscn', true)
 
 func on_options_back_pressed(options_menu: Node):
 	options_menu.queue_free()

@@ -32,11 +32,7 @@ func play_jingle(defeat: bool = false):
 	else: $VictoryStreamPlayer.play()
 
 func on_continue_button_pressed():
-	ScreenTransition.transition_to_scene('res://scenes/ui/meta_menu.tscn')
-	await ScreenTransition.transitioned_halfway
-	get_tree().paused = false
+	ScreenTransition.transition_to_scene('res://scenes/ui/meta_menu.tscn', true)
 
 func on_quit_button_pressed():
-	ScreenTransition.transition_to_scene('res://scenes/ui/main_menu.tscn')
-	await ScreenTransition.transitioned_halfway
-	get_tree().paused = false
+	ScreenTransition.transition_to_scene('res://scenes/ui/main_menu.tscn', true)
