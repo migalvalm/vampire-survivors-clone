@@ -10,6 +10,8 @@ class_name Player
 @onready var animation_player = $AnimationPlayer
 @onready var visuals = $Visuals
 @onready var velocity_component: Node = $VelocityComponent
+@onready var dash_component: Node = $DashComponent 
+
 
 var number_colliding_bodies: int = 0
 var base_speed = 0
@@ -29,10 +31,16 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	var movement_vector = get_movement_vector()
 	var direction = movement_vector.normalized()
-	velocity_component.accelerate_in_direction(direction)
+
+	velocity_component.accelerate_in_direction(
+		Vector2(sign(movement_vector.x), (movement_vector.y)).normalized(), dash_component.speed, dash_component.acceleration
+	) if dash_component.dashing else velocity_component.accelerate_in_direction(direction) 
+	
 	velocity_component.move(self)
 	
-	if movement_vector.x != 0 || movement_vector.y != 0:
+	if dash_component.dashing and movement_vector != Vector2.ZERO:
+		animation_player.play('dash')
+	elif movement_vector.x != 0 || movement_vector.y != 0:
 		animation_player.play('walk')
 	else: 
 		animation_player.play('RESET')
@@ -41,7 +49,7 @@ func _process(delta: float) -> void:
 	if move_sign != 0:
 		visuals.scale = Vector2(move_sign, 1)
 		
-func get_movement_vector() -> Vector2:	
+func get_movement_vector() -> Vector2:
 	var x_movement = Input.get_action_strength('move_right') - Input.get_action_strength('move_left')
 	var y_movement = Input.get_action_strength('move_down') - Input.get_action_strength('move_up')
 	
@@ -57,10 +65,14 @@ func update_health_display():
 	health_bar.value = health_component.get_health_percent()
 	
 func on_body_entered(body: Node2D) -> void:
+	if dash_component.dashing:
+		return
+
 	number_colliding_bodies += 1
 	check_deal_damage()
 
 func on_body_exited(body: Node2D) -> void:
+	if number_colliding_bodies == 0: return
 	number_colliding_bodies -= 1
 
 func on_damage_interval_timer_timeout() -> void:

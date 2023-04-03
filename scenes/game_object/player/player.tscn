@@ -1,6 +1,5 @@
-[gd_scene load_steps=19 format=3 uid="uid://bk2lpbua3qjj4"]
+[gd_scene load_steps=27 format=3 uid="uid://cvy4bn6gkycus"]
 
-[ext_resource type="Texture2D" uid="uid://d2d485t6rdta2" path="res://scenes/game_object/player/player.png" id="1_v54y6"]
 [ext_resource type="Script" path="res://scenes/game_object/player/player.gd" id="1_x14sp"]
 [ext_resource type="PackedScene" uid="uid://bnh7burb0h2aa" path="res://scenes/ability/sword_ability_controller/sword_ability_controller.tscn" id="2_5r485"]
 [ext_resource type="PackedScene" uid="uid://ch0udsxsqb14i" path="res://scenes/component/velocity_component.tscn" id="2_p83nj"]
@@ -11,6 +10,9 @@
 [ext_resource type="AudioStream" uid="uid://frkxm5guifff" path="res://assets/audio/impactMining_002.ogg" id="5_jotl6"]
 [ext_resource type="AudioStream" uid="uid://dh38e4wv4f7fc" path="res://assets/audio/impactMining_003.ogg" id="6_kbdsc"]
 [ext_resource type="AudioStream" uid="uid://b3ko521qeo8pm" path="res://assets/audio/impactMining_004.ogg" id="7_g7dbb"]
+[ext_resource type="PackedScene" uid="uid://bkwyscqfu21bt" path="res://scenes/component/dash_component.tscn" id="10_nmeis"]
+[ext_resource type="Texture2D" uid="uid://db1u3fmqjn1dk" path="res://assets/player/skins/default.png" id="11_0clkk"]
+[ext_resource type="Texture2D" uid="uid://bhroxftwn14b0" path="res://assets/effects/potion_effect.png" id="12_2qh3a"]
 
 [sub_resource type="Animation" id="Animation_sx8y2"]
 length = 0.001
@@ -51,6 +53,67 @@ tracks/2/keys = {
 "values": [Vector2(1, 1)]
 }
 
+[sub_resource type="Animation" id="Animation_ptytm"]
+resource_name = "dash"
+length = 0.4
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visuals/Texture:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.4),
+"transitions": PackedFloat32Array(1, 2.54912, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -1), Vector2(2.08165e-12, 2.08165e-12)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Visuals/Texture:scale")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(0.784, 3.24902, 0.8, 0.287175, 2),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.709, 1.3), Vector2(0.7, 0.6), Vector2(0.8, 1), Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Visuals/Texture:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.4),
+"transitions": PackedFloat32Array(3.13834, 5.27803, 4.92458),
+"update": 0,
+"values": [-0.0872665, 0.174533, 0.0]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Visuals/Effect")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"values": [{
+"args": [],
+"method": &"stop"
+}, {
+"args": [&"dash_0", 1.0, false],
+"method": &"play"
+}, {
+"args": [],
+"method": &"stop"
+}]
+}
+
 [sub_resource type="Animation" id="Animation_n64ea"]
 resource_name = "walk"
 length = 0.4
@@ -65,7 +128,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.3),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(2.08165e-12, -5), Vector2(2.08165e-12, 2.08165e-12)]
+"values": [Vector2(0, 0), Vector2(0, -1), Vector2(2.08165e-12, 2.08165e-12)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -77,7 +140,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.2, 0.4),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [0.0, -0.261799, 0.261799, 3.48787e-16]
+"values": [0.0, -0.174533, 0.0872665, 3.48787e-16]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -89,12 +152,13 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.3, 0.4),
 "transitions": PackedFloat32Array(0.784, 2.63902, 1, 1),
 "update": 0,
-"values": [Vector2(1, 1), Vector2(0.8, 1.1), Vector2(1.5, 0.7), Vector2(1, 1)]
+"values": [Vector2(1, 1), Vector2(0.8, 1.1), Vector2(1.3, 1), Vector2(1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_o5ie4"]
 _data = {
 "RESET": SubResource("Animation_sx8y2"),
+"dash": SubResource("Animation_ptytm"),
 "walk": SubResource("Animation_n64ea")
 }
 
@@ -109,6 +173,45 @@ corner_detail = 18
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pnbmn"]
 radius = 32.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mpg7c"]
+atlas = ExtResource("12_2qh3a")
+region = Rect2(0, 0, 16, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3syqp"]
+atlas = ExtResource("12_2qh3a")
+region = Rect2(16, 0, 16, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8b1e4"]
+atlas = ExtResource("12_2qh3a")
+region = Rect2(32, 0, 16, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fq7o1"]
+atlas = ExtResource("12_2qh3a")
+region = Rect2(48, 0, 16, 39)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4f7sj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mpg7c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3syqp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8b1e4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fq7o1")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"dash_0",
+"speed": 15.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wo6bm"]
 radius = 7.0
@@ -131,7 +234,11 @@ libraries = {
 
 [node name="VelocityComponent" parent="." instance=ExtResource("2_p83nj")]
 max_speed = 90
-acceleration = 25.0
+acceleration = 30.0
+
+[node name="DashComponent" parent="." instance=ExtResource("10_nmeis")]
+acceleration = 30.0
+speed = 300
 
 [node name="HealthComponent" parent="." instance=ExtResource("4_8g6dd")]
 
@@ -146,9 +253,9 @@ one_shot = true
 [node name="HealthBar" type="ProgressBar" parent="."]
 custom_minimum_size = Vector2(32, 6)
 offset_left = -16.0
-offset_top = -22.0
+offset_top = -23.0
 offset_right = 16.0
-offset_bottom = -16.0
+offset_bottom = -17.0
 pivot_offset = Vector2(16, 3)
 theme_override_styles/fill = SubResource("StyleBoxFlat_5crne")
 max_value = 1.0
@@ -166,9 +273,21 @@ shape = SubResource("CircleShape2D_pnbmn")
 
 [node name="Visuals" type="Node2D" parent="."]
 
+[node name="Effect" type="AnimatedSprite2D" parent="Visuals"]
+position = Vector2(-10, -5)
+rotation = 4.7129
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_4f7sj")
+animation = &"dash_0"
+autoplay = "default"
+frame = 4
+frame_progress = 1.0
+flip_h = true
+
 [node name="Texture" type="Sprite2D" parent="Visuals"]
-texture = ExtResource("1_v54y6")
+texture = ExtResource("11_0clkk")
 offset = Vector2(0, -8)
+region_rect = Rect2(25, 13, 15, 19)
 
 [node name="CollisionArea2D" type="Area2D" parent="."]
 visible = false

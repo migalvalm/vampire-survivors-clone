@@ -8,4 +8,5 @@ script = ExtResource("1_fn3x8")
 anvil_ability_scene = ExtResource("2_ccgh8")
 
 [node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
 autostart = true

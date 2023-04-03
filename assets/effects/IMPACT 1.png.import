@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d2d485t6rdta2"
-path="res://.godot/imported/player.png-45a613f735d2cef2659ec742d7201055.ctex"
+uid="uid://cxijd3vuubl1o"
+path="res://.godot/imported/IMPACT 1.png-b986947007b93cc982ca90d5aa02c39c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/game_object/player/player.png"
-dest_files=["res://.godot/imported/player.png-45a613f735d2cef2659ec742d7201055.ctex"]
+source_file="res://assets/effects/IMPACT 1.png"
+dest_files=["res://.godot/imported/IMPACT 1.png-b986947007b93cc982ca90d5aa02c39c.ctex"]
 
 [params]
 

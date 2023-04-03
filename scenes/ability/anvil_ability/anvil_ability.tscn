@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://dj2xctpuwbnxj"]
+[gd_scene load_steps=17 format=3 uid="uid://dj2xctpuwbnxj"]
 
 [ext_resource type="Script" path="res://scenes/ability/anvil_ability/anvil_ability.gd" id="1_4168e"]
 [ext_resource type="Texture2D" uid="uid://bpku40u7m77xe" path="res://scenes/ability/anvil_ability/anvil.png" id="2_3xulg"]
+[ext_resource type="Texture2D" uid="uid://coc6wjagkxusg" path="res://assets/effects/IMPACT DUST KICK.png" id="2_b0a2v"]
 [ext_resource type="PackedScene" uid="uid://bdfm633tkddth" path="res://scenes/component/hitbox_component.tscn" id="3_wsx5o"]
 
 [sub_resource type="Animation" id="Animation_fnsg6"]
@@ -45,7 +46,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_v8lpd"]
 resource_name = "default"
-length = 0.4
+length = 0.8
 step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -78,10 +79,10 @@ tracks/2/path = NodePath("Visuals/Texture:scale")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.35, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.35, 0.4, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(1, 1), Vector2(1, 1), Vector2(0, 0)]
+"values": [Vector2(0, 0), Vector2(1, 1), Vector2(1, 1), Vector2(1, 1), Vector2(0, 0)]
 }
 tracks/3/type = "method"
 tracks/3/imported = false
@@ -94,7 +95,24 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
-"method": &"queue_free"
+"method": &"start_queue_free_timer"
+}]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Visuals/Effects")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.15),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"stop"
+}, {
+"args": [&"impact", 1.0, false],
+"method": &"play"
 }]
 }
 
@@ -103,6 +121,69 @@ _data = {
 "RESET": SubResource("Animation_fnsg6"),
 "default": SubResource("Animation_v8lpd")
 }
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eh4is"]
+atlas = ExtResource("2_b0a2v")
+region = Rect2(0, 0, 24, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fcaft"]
+atlas = ExtResource("2_b0a2v")
+region = Rect2(24, 0, 24, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ax5in"]
+atlas = ExtResource("2_b0a2v")
+region = Rect2(48, 0, 24, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2v07q"]
+atlas = ExtResource("2_b0a2v")
+region = Rect2(72, 0, 24, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3hrwb"]
+atlas = ExtResource("2_b0a2v")
+region = Rect2(96, 0, 24, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1vib6"]
+atlas = ExtResource("2_b0a2v")
+region = Rect2(120, 0, 24, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i4omc"]
+atlas = ExtResource("2_b0a2v")
+region = Rect2(144, 0, 24, 14)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tvolk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eh4is")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fcaft")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ax5in")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2v07q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3hrwb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1vib6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i4omc")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"impact",
+"speed": 10.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_80mar"]
 radius = 32.0
@@ -121,6 +202,14 @@ libraries = {
 [node name="Texture" type="Sprite2D" parent="Visuals"]
 position = Vector2(0, -7)
 texture = ExtResource("2_3xulg")
+
+[node name="Effects" type="AnimatedSprite2D" parent="Visuals"]
+position = Vector2(-4, -7)
+sprite_frames = SubResource("SpriteFrames_tvolk")
+animation = &"impact"
+frame = 8
+frame_progress = 1.0
+speed_scale = 2.0
 
 [node name="HitboxComponent" parent="." instance=ExtResource("3_wsx5o")]
 
