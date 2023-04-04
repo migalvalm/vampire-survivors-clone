@@ -38,9 +38,7 @@ func _process(delta: float) -> void:
 	
 	velocity_component.move(self)
 	
-	if dash_component.dashing and movement_vector != Vector2.ZERO:
-		animation_player.play('dash')
-	elif movement_vector.x != 0 || movement_vector.y != 0:
+	if movement_vector.x != 0 || movement_vector.y != 0:
 		animation_player.play('walk')
 	else: 
 		animation_player.play('RESET')

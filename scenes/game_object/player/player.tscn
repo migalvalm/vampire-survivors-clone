@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://cvy4bn6gkycus"]
+[gd_scene load_steps=22 format=3 uid="uid://cvy4bn6gkycus"]
 
 [ext_resource type="Script" path="res://scenes/game_object/player/player.gd" id="1_x14sp"]
 [ext_resource type="PackedScene" uid="uid://bnh7burb0h2aa" path="res://scenes/ability/sword_ability_controller/sword_ability_controller.tscn" id="2_5r485"]
@@ -12,7 +12,7 @@
 [ext_resource type="AudioStream" uid="uid://b3ko521qeo8pm" path="res://assets/audio/impactMining_004.ogg" id="7_g7dbb"]
 [ext_resource type="PackedScene" uid="uid://bkwyscqfu21bt" path="res://scenes/component/dash_component.tscn" id="10_nmeis"]
 [ext_resource type="Texture2D" uid="uid://db1u3fmqjn1dk" path="res://assets/player/skins/default.png" id="11_0clkk"]
-[ext_resource type="Texture2D" uid="uid://bhroxftwn14b0" path="res://assets/effects/potion_effect.png" id="12_2qh3a"]
+[ext_resource type="PackedScene" uid="uid://ccymc31lumq50" path="res://scenes/ability/dash_ability/dash_effect.tscn" id="13_w8p8k"]
 
 [sub_resource type="Animation" id="Animation_sx8y2"]
 length = 0.001
@@ -93,26 +93,6 @@ tracks/2/keys = {
 "update": 0,
 "values": [-0.0872665, 0.174533, 0.0]
 }
-tracks/3/type = "method"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Visuals/Effect")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1),
-"values": [{
-"args": [],
-"method": &"stop"
-}, {
-"args": [&"dash_0", 1.0, false],
-"method": &"play"
-}, {
-"args": [],
-"method": &"stop"
-}]
-}
 
 [sub_resource type="Animation" id="Animation_n64ea"]
 resource_name = "walk"
@@ -174,45 +154,6 @@ corner_detail = 18
 [sub_resource type="CircleShape2D" id="CircleShape2D_pnbmn"]
 radius = 32.0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_mpg7c"]
-atlas = ExtResource("12_2qh3a")
-region = Rect2(0, 0, 16, 39)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_3syqp"]
-atlas = ExtResource("12_2qh3a")
-region = Rect2(16, 0, 16, 39)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_8b1e4"]
-atlas = ExtResource("12_2qh3a")
-region = Rect2(32, 0, 16, 39)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_fq7o1"]
-atlas = ExtResource("12_2qh3a")
-region = Rect2(48, 0, 16, 39)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_4f7sj"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_mpg7c")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_3syqp")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_8b1e4")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_fq7o1")
-}, {
-"duration": 1.0,
-"texture": null
-}],
-"loop": false,
-"name": &"dash_0",
-"speed": 15.0
-}]
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_wo6bm"]
 radius = 7.0
 
@@ -273,17 +214,6 @@ shape = SubResource("CircleShape2D_pnbmn")
 
 [node name="Visuals" type="Node2D" parent="."]
 
-[node name="Effect" type="AnimatedSprite2D" parent="Visuals"]
-position = Vector2(-10, -5)
-rotation = 4.7129
-scale = Vector2(0.5, 0.5)
-sprite_frames = SubResource("SpriteFrames_4f7sj")
-animation = &"dash_0"
-autoplay = "default"
-frame = 4
-frame_progress = 1.0
-flip_h = true
-
 [node name="Texture" type="Sprite2D" parent="Visuals"]
 texture = ExtResource("11_0clkk")
 offset = Vector2(0, -8)
@@ -302,3 +232,5 @@ shape = SubResource("CircleShape2D_wo6bm")
 visible = false
 position = Vector2(0, -5)
 shape = SubResource("CircleShape2D_1b1s0")
+
+[node name="DashEffect" parent="." instance=ExtResource("13_w8p8k")]
