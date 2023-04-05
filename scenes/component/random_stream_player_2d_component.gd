@@ -1,4 +1,5 @@
 extends AudioStreamPlayer2D
+class_name RandomStreamPlayer2DComponent
 
 @export var streams: Array[AudioStream]
 @export var randomize_pitch = true

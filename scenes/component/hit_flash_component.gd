@@ -1,6 +1,6 @@
 extends Node
 
-@export var health_component: Node
+@export var health_component: HealthComponent
 @export var sprite: Sprite2D
 @export var hit_flash_material: ShaderMaterial
 

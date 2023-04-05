@@ -5,7 +5,7 @@ const SPAWN_RADIUS: int = 150
 @export var basic_enemy_scene: PackedScene
 @export var wizard_enemy_scene: PackedScene
 @export var bat_enemy_scene: PackedScene
-@export var arena_time_manager: Node
+@export var arena_time_manager: ArenaTimeManager
 
 @onready var timer = $Timer
 

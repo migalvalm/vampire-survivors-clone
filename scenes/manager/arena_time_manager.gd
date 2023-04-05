@@ -1,4 +1,5 @@
 extends Node
+class_name ArenaTimeManager
 
 signal arena_difficulty_increased(arena_difficulty: int)
 

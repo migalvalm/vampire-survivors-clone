@@ -5,8 +5,10 @@ const BASE_DAMAGE = 15
 
 @export var anvil_ability_scene: PackedScene
 
+@onready var timer: Timer = $Timer 
+
 func _ready() -> void:
-	$Timer.timeout.connect(on_timer_timeout)
+	timer.timeout.connect(on_timer_timeout)
 
 func on_timer_timeout() -> void:
 	var player = get_tree().get_first_node_in_group('player') as Node2D

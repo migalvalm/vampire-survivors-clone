@@ -3,14 +3,19 @@ extends CanvasLayer
 var options_scene = preload('res://scenes/ui/options_menu.tscn')
 var meta_menu_scene = preload('res://scenes/ui/meta_menu.tscn')
 
+@onready var play_button: Button = %PlayButton
+@onready var upgrades_button: Button = %UpgradesButton
+@onready var options_button: Button = %OptionsButton
+@onready var quit_button: Button = %QuitButton
+
 func _ready() -> void:
-	%PlayButton.pressed.connect(on_play_pressed)
-	%UpgradesButton.pressed.connect(on_upgrade_pressed)
-	%OptionsButton.pressed.connect(on_options_pressed)
-	%QuitButton.pressed.connect(on_quit_pressed)
+	play_button.pressed.connect(on_play_pressed)
+	upgrades_button.pressed.connect(on_upgrade_pressed)
+	options_button.pressed.connect(on_options_pressed)
+	quit_button.pressed.connect(on_quit_pressed)
 
 func on_play_pressed() -> void:
-	ScreenTransition.transition_to_scene('res://scenes/main/main.tscn')
+	ScreenTransition.transition_to_scene('res://scenes/main/main.tscn', true)
 
 func on_upgrade_pressed() -> void:
 	ScreenTransition.transition()

@@ -2,10 +2,11 @@ extends Node2D
 
 @onready var collision: CollisionShape2D = $Area/Collision
 @onready var texture: Sprite2D = $Texture
+@onready var area_range: Area2D = $Area
+@onready var random_stream: RandomStreamPlayer2DComponent = $RandomStreamPlayer2DComponent
 
 func _ready():
-	$Area.area_entered.connect(on_area_entered)
-
+	area_range.area_entered.connect(on_area_entered)
 
 func tween_collect(percent: float, start_position: Vector2):
 	var player = get_tree().get_first_node_in_group('player')
@@ -48,4 +49,4 @@ func on_area_entered(area: Area2D) -> void:
 	tween.chain()
 	tween.tween_callback(collect)
 	
-	$RandomStreamPlayer2DComponent.play_random()
+	random_stream.play_random()

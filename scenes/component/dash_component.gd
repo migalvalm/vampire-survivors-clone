@@ -1,4 +1,5 @@
 extends Node
+class_name DashComponent
 
 @export var dash_effect_scene: PackedScene
 @export var	acceleration: float = 50
@@ -26,6 +27,7 @@ func play_effect() -> void:
 	apply_direction(Vector2(move_sign_x, move_sign_y), dash_effect)
 	owner.add_child(dash_effect)
 	dash_effect.play()
+
 	
 func apply_direction(direction: Vector2, dash_effect: AnimatedSprite2D) -> void:
 	print(direction)

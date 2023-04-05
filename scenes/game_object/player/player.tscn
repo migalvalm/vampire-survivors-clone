@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://cvy4bn6gkycus"]
+[gd_scene load_steps=22 format=3 uid="uid://bk2lpbua3qjj4"]
 
 [ext_resource type="Script" path="res://scenes/game_object/player/player.gd" id="1_x14sp"]
 [ext_resource type="PackedScene" uid="uid://bnh7burb0h2aa" path="res://scenes/ability/sword_ability_controller/sword_ability_controller.tscn" id="2_5r485"]
@@ -10,7 +10,7 @@
 [ext_resource type="AudioStream" uid="uid://frkxm5guifff" path="res://assets/audio/impactMining_002.ogg" id="5_jotl6"]
 [ext_resource type="AudioStream" uid="uid://dh38e4wv4f7fc" path="res://assets/audio/impactMining_003.ogg" id="6_kbdsc"]
 [ext_resource type="AudioStream" uid="uid://b3ko521qeo8pm" path="res://assets/audio/impactMining_004.ogg" id="7_g7dbb"]
-[ext_resource type="PackedScene" uid="uid://bkwyscqfu21bt" path="res://scenes/component/dash_component.tscn" id="10_nmeis"]
+[ext_resource type="PackedScene" uid="uid://cfrabb8rhb10i" path="res://scenes/component/dash_component.tscn" id="10_nmeis"]
 [ext_resource type="Texture2D" uid="uid://db1u3fmqjn1dk" path="res://assets/player/skins/default.png" id="11_0clkk"]
 [ext_resource type="PackedScene" uid="uid://ccymc31lumq50" path="res://scenes/ability/dash_ability/dash_effect.tscn" id="13_w8p8k"]
 
@@ -79,7 +79,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
 "transitions": PackedFloat32Array(0.784, 3.24902, 0.8, 0.287175, 2),
 "update": 0,
-"values": [Vector2(1, 1), Vector2(0.709, 1.3), Vector2(0.7, 0.6), Vector2(0.8, 1), Vector2(1, 1)]
+"values": [Vector2(1, 1), Vector2(0.7, 2), Vector2(0.7, 0.6), Vector2(0.8, 1), Vector2(1, 1)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -160,10 +160,11 @@ radius = 7.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_1b1s0"]
 radius = 5.0
 
-[node name="Player" type="CharacterBody2D" groups=["player"]]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("hurtbox_area") groups=["player"]]
 collision_layer = 0
 motion_mode = 1
 script = ExtResource("1_x14sp")
+hurtbox_area = NodePath("CollisionArea2D")
 
 [node name="HitRandomStreamPlayer" parent="." instance=ExtResource("2_x5gjg")]
 streams = Array[AudioStream]([ExtResource("3_rdpjg"), ExtResource("4_ofvka"), ExtResource("5_jotl6"), ExtResource("6_kbdsc"), ExtResource("7_g7dbb")])

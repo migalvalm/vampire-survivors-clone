@@ -1,10 +1,12 @@
 extends Node2D
 
+@onready var label: Label = $Label
+
 func _ready():
 	pass
 
 func start(text: String) -> void:
-	$Label.text = text
+	label.text = text
 	
 	var tween = create_tween()
 	tween.set_parallel()

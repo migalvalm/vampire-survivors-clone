@@ -2,11 +2,13 @@ extends Node
 
 @export var axe_ability_scene: PackedScene
 
+@onready var timer: Timer = $Timer
+
 var base_damage = 10
 var additional_damage_percent = 1
 
 func _ready() -> void:
-	$Timer.timeout.connect(on_timer_timeout)
+	timer.timeout.connect(on_timer_timeout)
 	GameEvents.ability_upgrade_added.connect(on_ability_upgrade_added)
 	
 func on_timer_timeout() -> void:

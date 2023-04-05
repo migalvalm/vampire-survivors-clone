@@ -4,6 +4,8 @@ signal selected
 
 @onready var name_label: Label = $%NameLabel
 @onready var description_label: Label = $%DescriptionLabel
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var hover_animation_player: AnimationPlayer = $HoverAnimationPlayer
 
 var disabled = false
 
@@ -15,20 +17,20 @@ func play_in(delay: float = 0) -> void:
 	modulate = Color.TRANSPARENT
 	await get_tree().create_timer(delay).timeout
 	modulate = Color.WHITE
-	$AnimationPlayer.play('in')
+	animation_player.play('in')
 
 func play_discard() -> void:
-	$AnimationPlayer.play('discard')
+	animation_player.play('discard')
 
 func select_card() -> void:
 	disabled = true
-	$AnimationPlayer.play('selected')
+	animation_player.play('selected')
 	for other_card in get_tree().get_nodes_in_group('upgrade_card'):
 		if other_card == self:
 			continue
 		other_card.play_discard()
 		
-	await $AnimationPlayer.animation_finished
+	await animation_player.animation_finished
 	selected.emit()
 
 func set_ability_upgrade(upgrade: AbilityUpgrade):
@@ -41,4 +43,4 @@ func on_gui_input(event: InputEvent):
 
 func on_mouse_entered():
 	if disabled: return
-	$HoverAnimationPlayer.play('hover')
+	hover_animation_player.play('hover')
