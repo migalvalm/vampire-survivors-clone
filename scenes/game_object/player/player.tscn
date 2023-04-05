@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://bk2lpbua3qjj4"]
+[gd_scene load_steps=24 format=3 uid="uid://bk2lpbua3qjj4"]
 
 [ext_resource type="Script" path="res://scenes/game_object/player/player.gd" id="1_x14sp"]
 [ext_resource type="PackedScene" uid="uid://bnh7burb0h2aa" path="res://scenes/ability/sword_ability_controller/sword_ability_controller.tscn" id="2_5r485"]
@@ -12,6 +12,7 @@
 [ext_resource type="AudioStream" uid="uid://b3ko521qeo8pm" path="res://assets/audio/impactMining_004.ogg" id="7_g7dbb"]
 [ext_resource type="PackedScene" uid="uid://cfrabb8rhb10i" path="res://scenes/component/dash_component.tscn" id="10_nmeis"]
 [ext_resource type="Texture2D" uid="uid://db1u3fmqjn1dk" path="res://assets/player/skins/default.png" id="11_0clkk"]
+[ext_resource type="PackedScene" uid="uid://pwibcmv2na4x" path="res://scenes/component/shadow_component.tscn" id="12_d7a52"]
 [ext_resource type="PackedScene" uid="uid://ccymc31lumq50" path="res://scenes/ability/dash_ability/dash_effect.tscn" id="13_w8p8k"]
 
 [sub_resource type="Animation" id="Animation_sx8y2"]
@@ -52,6 +53,42 @@ tracks/2/keys = {
 "update": 0,
 "values": [Vector2(1, 1)]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_ptytm"]
 resource_name = "dash"
@@ -79,7 +116,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
 "transitions": PackedFloat32Array(0.784, 3.24902, 0.8, 0.287175, 2),
 "update": 0,
-"values": [Vector2(1, 1), Vector2(0.7, 2), Vector2(0.7, 0.6), Vector2(0.8, 1), Vector2(1, 1)]
+"values": [Vector2(1, 1), Vector2(0.7, 1.4), Vector2(0.7, 0.6), Vector2(0.8, 1), Vector2(1, 1)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -88,10 +125,10 @@ tracks/2/path = NodePath("Visuals/Texture:rotation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.25, 0.4),
-"transitions": PackedFloat32Array(3.13834, 5.27803, 4.92458),
+"times": PackedFloat32Array(0, 0.1, 0.25, 0.4),
+"transitions": PackedFloat32Array(3.13834, 0.870551, 5.27803, 4.92458),
 "update": 0,
-"values": [-0.0872665, 0.174533, 0.0]
+"values": [-0.0872665, -0.261799, 0.174533, 0.0]
 }
 
 [sub_resource type="Animation" id="Animation_n64ea"]
@@ -135,10 +172,52 @@ tracks/2/keys = {
 "values": [Vector2(1, 1), Vector2(0.8, 1.1), Vector2(1.3, 1), Vector2(1, 1)]
 }
 
+[sub_resource type="Animation" id="Animation_sbwug"]
+resource_name = "idle"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visuals/Texture:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6),
+"transitions": PackedFloat32Array(0.0742701, 0.133972, 0.101531),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.8, 1.05), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Visuals/Texture:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Visuals/Texture:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_o5ie4"]
 _data = {
 "RESET": SubResource("Animation_sx8y2"),
 "dash": SubResource("Animation_ptytm"),
+"idle": SubResource("Animation_sbwug"),
 "walk": SubResource("Animation_n64ea")
 }
 
@@ -179,8 +258,6 @@ max_speed = 90
 acceleration = 30.0
 
 [node name="DashComponent" parent="." instance=ExtResource("10_nmeis")]
-acceleration = 30.0
-speed = 300
 
 [node name="HealthComponent" parent="." instance=ExtResource("4_8g6dd")]
 
@@ -214,6 +291,8 @@ collision_mask = 0
 shape = SubResource("CircleShape2D_pnbmn")
 
 [node name="Visuals" type="Node2D" parent="."]
+
+[node name="ShadowComponent" parent="Visuals" instance=ExtResource("12_d7a52")]
 
 [node name="Texture" type="Sprite2D" parent="Visuals"]
 texture = ExtResource("11_0clkk")

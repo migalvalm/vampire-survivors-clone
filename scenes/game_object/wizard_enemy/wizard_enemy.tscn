@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://cj64kylpwr4uk"]
+[gd_scene load_steps=23 format=3 uid="uid://cj64kylpwr4uk"]
 
 [ext_resource type="PackedScene" uid="uid://dmegso3kjij1s" path="res://scenes/component/health_component.tscn" id="1_hj65g"]
 [ext_resource type="Texture2D" uid="uid://dfnvwq55bbcsj" path="res://scenes/game_object/wizard_enemy/wizard_enemy.png" id="1_mxvyy"]
@@ -15,6 +15,7 @@
 [ext_resource type="AudioStream" uid="uid://dpju6t4youwva" path="res://assets/audio/footstep_carpet_002.ogg" id="11_3env3"]
 [ext_resource type="AudioStream" uid="uid://b5h2j2kvs6myr" path="res://assets/audio/footstep_carpet_003.ogg" id="12_f3uet"]
 [ext_resource type="AudioStream" uid="uid://cqhbbk86y1esc" path="res://assets/audio/footstep_carpet_004.ogg" id="13_evlk2"]
+[ext_resource type="PackedScene" uid="uid://pwibcmv2na4x" path="res://scenes/component/shadow_component.tscn" id="15_kyvps"]
 
 [sub_resource type="Animation" id="Animation_qyro6"]
 length = 0.001
@@ -120,7 +121,7 @@ _data = {
 "walk": SubResource("Animation_6xgv4")
 }
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_vt31b"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ed1vs"]
 resource_local_to_scene = true
 shader = ExtResource("6_iynof")
 shader_parameter/lerp_percent = 0.0
@@ -155,7 +156,7 @@ health_component = NodePath("../HealthComponent")
 [node name="HitFlashComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("5_4652o")]
 health_component = NodePath("../HealthComponent")
 sprite = NodePath("../Visuals/Texture")
-hit_flash_material = SubResource("ShaderMaterial_vt31b")
+hit_flash_material = SubResource("ShaderMaterial_ed1vs")
 
 [node name="DeathComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("2_7gcwh")]
 health_component = NodePath("../HealthComponent")
@@ -165,6 +166,8 @@ sprite = NodePath("../Visuals/Texture")
 streams = Array[AudioStream]([ExtResource("9_huf66"), ExtResource("10_q21qc"), ExtResource("11_3env3"), ExtResource("12_f3uet"), ExtResource("13_evlk2")])
 
 [node name="Visuals" type="Node2D" parent="."]
+
+[node name="ShadowComponent" parent="Visuals" instance=ExtResource("15_kyvps")]
 
 [node name="Texture" type="Sprite2D" parent="Visuals"]
 texture = ExtResource("1_mxvyy")

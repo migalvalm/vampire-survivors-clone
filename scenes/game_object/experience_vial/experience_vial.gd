@@ -32,6 +32,7 @@ func disable_collision():
 
 func on_area_entered(area: Area2D) -> void:
 	Callable(disable_collision).call_deferred()
+	Callable($ShadowComponent.queue_free).call_deferred()
 	
 	var tween = create_tween() 
 	tween.set_parallel()

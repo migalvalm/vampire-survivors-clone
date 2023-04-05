@@ -17,7 +17,6 @@ func on_died():
 		return
 	
 	var entity: Node2D = owner
-	
 	var spawn_position = entity.global_position
 	
 	var entities = get_tree().get_first_node_in_group('entities_layer')

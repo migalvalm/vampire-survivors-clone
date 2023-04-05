@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://b505dt1cwkrrq"]
+[gd_scene load_steps=23 format=3 uid="uid://b505dt1cwkrrq"]
 
 [ext_resource type="Script" path="res://scenes/game_object/bat_enemy/bat_enemy.gd" id="1_pmti0"]
 [ext_resource type="PackedScene" uid="uid://dmegso3kjij1s" path="res://scenes/component/health_component.tscn" id="2_t3f1w"]
@@ -15,6 +15,7 @@
 [ext_resource type="AudioStream" uid="uid://cqhbbk86y1esc" path="res://assets/audio/footstep_carpet_004.ogg" id="13_egm8d"]
 [ext_resource type="Texture2D" uid="uid://dwcfx16y75j3h" path="res://scenes/game_object/bat_enemy/bat.png" id="14_mhtkk"]
 [ext_resource type="PackedScene" uid="uid://7jwo8f2bjjf8" path="res://scenes/component/hurtbox_component.tscn" id="15_ht2t6"]
+[ext_resource type="PackedScene" uid="uid://pwibcmv2na4x" path="res://scenes/component/shadow_component.tscn" id="15_v3xcm"]
 
 [sub_resource type="Animation" id="Animation_qyro6"]
 length = 0.001
@@ -79,7 +80,7 @@ _data = {
 "walk": SubResource("Animation_6xgv4")
 }
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_hrsjm"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_q4pok"]
 resource_local_to_scene = true
 shader = ExtResource("6_k4ysp")
 shader_parameter/lerp_percent = 0.0
@@ -115,7 +116,7 @@ health_component = NodePath("../HealthComponent")
 [node name="HitFlashComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("5_v4rfg")]
 health_component = NodePath("../HealthComponent")
 sprite = NodePath("../Visuals/Texture")
-hit_flash_material = SubResource("ShaderMaterial_hrsjm")
+hit_flash_material = SubResource("ShaderMaterial_q4pok")
 
 [node name="DeathComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("7_60dis")]
 health_component = NodePath("../HealthComponent")
@@ -125,6 +126,9 @@ sprite = NodePath("../Visuals/Texture")
 streams = Array[AudioStream]([ExtResource("9_p5qty"), ExtResource("10_ml0dg"), ExtResource("11_nviph"), ExtResource("12_6iy43"), ExtResource("13_egm8d")])
 
 [node name="Visuals" type="Node2D" parent="."]
+
+[node name="ShadowComponent" parent="Visuals" instance=ExtResource("15_v3xcm")]
+scale = Vector2(0.08, 0.03)
 
 [node name="Texture" type="Sprite2D" parent="Visuals"]
 position = Vector2(0, -7)

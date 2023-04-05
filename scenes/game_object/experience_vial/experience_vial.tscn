@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dw3vwc0kj1n1l"]
+[gd_scene load_steps=11 format=3 uid="uid://dw3vwc0kj1n1l"]
 
 [ext_resource type="Texture2D" uid="uid://cr8aukhijeybf" path="res://scenes/game_object/experience_vial/experience_vial.png" id="1_ujvb8"]
 [ext_resource type="Script" path="res://scenes/game_object/experience_vial/experience_vial.gd" id="1_x8wj7"]
@@ -8,6 +8,7 @@
 [ext_resource type="AudioStream" uid="uid://xkegunuea61g" path="res://assets/audio/impactGeneric_light_002.ogg" id="5_rx1l3"]
 [ext_resource type="AudioStream" uid="uid://eckyw1bmxp5h" path="res://assets/audio/impactGeneric_light_003.ogg" id="6_2jerg"]
 [ext_resource type="AudioStream" uid="uid://c7m2d102qvyab" path="res://assets/audio/impactGeneric_light_004.ogg" id="7_ub7k6"]
+[ext_resource type="PackedScene" uid="uid://pwibcmv2na4x" path="res://scenes/component/shadow_component.tscn" id="8_48hfc"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_upxhk"]
 radius = 16.0
@@ -23,7 +24,12 @@ collision_layer = 0
 collision_mask = 16
 
 [node name="Collision" type="CollisionShape2D" parent="Area"]
+visible = false
 shape = SubResource("CircleShape2D_upxhk")
+
+[node name="ShadowComponent" parent="." instance=ExtResource("8_48hfc")]
+position = Vector2(2.1684e-19, 7)
+scale = Vector2(0.05, 0.03)
 
 [node name="Texture" type="Sprite2D" parent="."]
 texture = ExtResource("1_ujvb8")

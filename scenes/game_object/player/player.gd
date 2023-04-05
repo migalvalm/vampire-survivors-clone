@@ -13,8 +13,6 @@ class_name Player
 @onready var velocity_component: VelocityComponent = $VelocityComponent
 @onready var dash_component: DashComponent = $DashComponent 
 
-
-
 var number_colliding_bodies: int = 0
 var base_speed = 0
 
@@ -39,18 +37,19 @@ func _process(delta: float) -> void:
 	) if dash_component.dashing else velocity_component.accelerate_in_direction(direction) 
 	
 	velocity_component.move(self)
+	play_animation(movement_vector)
+
+func play_animation(direction: Vector2) -> void:
+	if not dash_component.dashing:
+		if (direction.x != 0 || direction.y != 0):
+			animation_player.play('walk')
+		else: 
+			animation_player.play('idle')
 	
-	if dash_component.dashing:
-		animation_player.play('dash')
-	if movement_vector.x != 0 || movement_vector.y != 0:
-		animation_player.play('walk')
-	else: 
-		animation_player.play('RESET')
-		
-	var move_sign = sign(movement_vector.x)
+	var move_sign = sign(direction.x)
 	if move_sign != 0:
 		visuals.scale = Vector2(move_sign, 1)
-		
+
 func get_movement_vector() -> Vector2:
 	var x_movement = Input.get_action_strength('move_right') - Input.get_action_strength('move_left')
 	var y_movement = Input.get_action_strength('move_down') - Input.get_action_strength('move_up')
