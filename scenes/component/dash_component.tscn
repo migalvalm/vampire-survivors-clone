@@ -1,8 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://cfrabb8rhb10i"]
+[gd_scene load_steps=3 format=3 uid="uid://cr7licrohdkmx"]
 
 [ext_resource type="Script" path="res://scenes/component/dash_component.gd" id="1_i8exi"]
-[ext_resource type="PackedScene" uid="uid://ccymc31lumq50" path="res://scenes/ability/dash_ability/dash_effect.tscn" id="2_fq3vf"]
+[ext_resource type="PackedScene" uid="uid://uvsk5gj4gosp" path="res://scenes/ability/dash_ability_controller/dash_ability_controller.tscn" id="2_apnwl"]
 
 [node name="DashComponent" type="Node"]
 script = ExtResource("1_i8exi")
-dash_effect_scene = ExtResource("2_fq3vf")
+dash_effect_scene = ExtResource("2_apnwl")

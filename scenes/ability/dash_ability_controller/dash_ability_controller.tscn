@@ -1,22 +1,22 @@
-[gd_scene load_steps=8 format=3 uid="uid://ccymc31lumq50"]
+[gd_scene load_steps=8 format=3 uid="uid://uvsk5gj4gosp"]
 
-[ext_resource type="Texture2D" uid="uid://c0jx16s3861tn" path="res://scenes/ability/dash_ability/dash.png" id="1_qkveo"]
-[ext_resource type="Script" path="res://scenes/ability/dash_ability/dash_effect.gd" id="2_6wp1k"]
+[ext_resource type="Texture2D" uid="uid://c0jx16s3861tn" path="res://scenes/ability/dash_ability_controller/dash.png" id="1_3bpwt"]
+[ext_resource type="Script" path="res://scenes/ability/dash_ability_controller/dash_ability_controller.gd" id="1_wjvrv"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_b0clo"]
-atlas = ExtResource("1_qkveo")
+atlas = ExtResource("1_3bpwt")
 region = Rect2(0, 0, 16, 39)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_llvpl"]
-atlas = ExtResource("1_qkveo")
+atlas = ExtResource("1_3bpwt")
 region = Rect2(16, 0, 16, 39)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2lyol"]
-atlas = ExtResource("1_qkveo")
+atlas = ExtResource("1_3bpwt")
 region = Rect2(32, 0, 16, 39)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_crhcn"]
-atlas = ExtResource("1_qkveo")
+atlas = ExtResource("1_3bpwt")
 region = Rect2(48, 0, 16, 39)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_nlhbm"]
@@ -45,9 +45,17 @@ animations = [{
 "speed": 15.0
 }]
 
-[node name="DashEffect" type="AnimatedSprite2D"]
+[node name="DashAbilityController" type="Node2D"]
+modulate = Color(1, 1, 1, 0.501961)
+position = Vector2(2.08165e-12, -5)
+script = ExtResource("1_wjvrv")
+
+[node name="DashEffect" type="AnimatedSprite2D" parent="."]
+modulate = Color(0.14902, 0.168627, 0.266667, 1)
 y_sort_enabled = true
+position = Vector2(2.08165e-12, 2.08165e-12)
+rotation = 1.5708
+scale = Vector2(0.6, 0.6)
 sprite_frames = SubResource("SpriteFrames_nlhbm")
 frame = 5
 frame_progress = 1.0
-script = ExtResource("2_6wp1k")
