@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="PlayerClass" load_steps=2 format=3 uid="uid://7w0l3xbhwnny"]
+
+[ext_resource type="Script" path="res://resources/player_classes/player_class.gd" id="1_kv2nn"]
+
+[resource]
+script = ExtResource("1_kv2nn")
+id = "default"
+max_level = 10
+experience_cost = 10
+texture_path = "res://assets/player/skins/default.png"
+title = "No class"
+description = "You are nothing."

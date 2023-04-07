@@ -11,8 +11,8 @@
 [ext_resource type="AudioStream" uid="uid://dh38e4wv4f7fc" path="res://assets/audio/impactMining_003.ogg" id="6_kbdsc"]
 [ext_resource type="AudioStream" uid="uid://b3ko521qeo8pm" path="res://assets/audio/impactMining_004.ogg" id="7_g7dbb"]
 [ext_resource type="PackedScene" uid="uid://cr7licrohdkmx" path="res://scenes/component/dash_component.tscn" id="10_nmeis"]
-[ext_resource type="Texture2D" uid="uid://db1u3fmqjn1dk" path="res://assets/player/skins/default.png" id="11_0clkk"]
 [ext_resource type="PackedScene" uid="uid://pwibcmv2na4x" path="res://scenes/component/shadow_component.tscn" id="12_d7a52"]
+[ext_resource type="PackedScene" uid="uid://c6ok3qiorsyuj" path="res://scenes/game_object/player/player_texture.tscn" id="13_1xm0l"]
 [ext_resource type="PackedScene" uid="uid://uvsk5gj4gosp" path="res://scenes/ability/dash_ability_controller/dash_ability_controller.tscn" id="13_w8p8k"]
 
 [sub_resource type="Animation" id="Animation_sx8y2"]
@@ -20,7 +20,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Visuals/Texture:position")
+tracks/0/path = NodePath("Visuals/PlayerTexture:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -32,7 +32,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Visuals/Texture:rotation")
+tracks/1/path = NodePath("Visuals/PlayerTexture:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -44,46 +44,10 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Visuals/Texture:scale")
+tracks/2/path = NodePath("Visuals/PlayerTexture:scale")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath(".:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath(".:rotation")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath(".:scale")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -97,7 +61,7 @@ step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Visuals/Texture:position")
+tracks/0/path = NodePath("Visuals/PlayerTexture:position")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -109,7 +73,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Visuals/Texture:scale")
+tracks/1/path = NodePath("Visuals/PlayerTexture:scale")
 tracks/1/interp = 2
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -121,7 +85,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Visuals/Texture:rotation")
+tracks/2/path = NodePath("Visuals/PlayerTexture:rotation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -138,7 +102,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Visuals/Texture:scale")
+tracks/0/path = NodePath("Visuals/PlayerTexture:scale")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -150,7 +114,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Visuals/Texture:rotation")
+tracks/1/path = NodePath("Visuals/PlayerTexture:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -162,7 +126,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Visuals/Texture:position")
+tracks/2/path = NodePath("Visuals/PlayerTexture:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -179,7 +143,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Visuals/Texture:position")
+tracks/0/path = NodePath("Visuals/PlayerTexture:position")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -191,7 +155,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Visuals/Texture:rotation")
+tracks/1/path = NodePath("Visuals/PlayerTexture:rotation")
 tracks/1/interp = 2
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -203,7 +167,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Visuals/Texture:scale")
+tracks/2/path = NodePath("Visuals/PlayerTexture:scale")
 tracks/2/interp = 2
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -294,10 +258,8 @@ shape = SubResource("CircleShape2D_pnbmn")
 
 [node name="ShadowComponent" parent="Visuals" instance=ExtResource("12_d7a52")]
 
-[node name="Texture" type="Sprite2D" parent="Visuals"]
-texture = ExtResource("11_0clkk")
-offset = Vector2(0, -8)
-region_rect = Rect2(25, 13, 15, 19)
+[node name="PlayerTexture" parent="Visuals" instance=ExtResource("13_1xm0l")]
+unique_name_in_owner = true
 
 [node name="CollisionArea2D" type="Area2D" parent="."]
 visible = false

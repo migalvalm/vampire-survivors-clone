@@ -4,6 +4,7 @@ class_name Player
 @export var arena_time_manager: ArenaTimeManager
 @export var hurtbox_area: Area2D
 
+@onready var player_texture: PlayerTexture = %PlayerTexture
 @onready var damage_interval_timer = $DamageIntervalTimer as Timer
 @onready var health_component = $HealthComponent as HealthComponent
 @onready var health_bar = $HealthBar
@@ -17,9 +18,11 @@ var number_colliding_bodies: int = 0
 var base_speed = 0
 
 func _ready() -> void:
+	player_texture.set_player_skin(ClassManager.current_class.texture_path)
+	
 	arena_time_manager.arena_difficulty_increased.connect(on_arena_difficulty_increased)
 	base_speed = velocity_component.max_speed
-
+	
 	hurtbox_area.body_entered.connect(on_body_entered)
 	hurtbox_area.body_exited.connect(on_body_exited)
 	damage_interval_timer.timeout.connect(on_damage_interval_timer_timeout)

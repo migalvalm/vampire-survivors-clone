@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://205wjaogf663"]
+
+[ext_resource type="Script" path="res://scenes/auto_load/class_manager.gd" id="1_kbjn7"]
+
+[node name="ClassManager" type="Node"]
+script = ExtResource("1_kbjn7")

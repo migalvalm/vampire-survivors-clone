@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="PlayerClass" load_steps=2 format=3 uid="uid://b4obu0jjlraor"]
+
+[ext_resource type="Script" path="res://resources/player_classes/player_class.gd" id="1_18b8q"]
+
+[resource]
+script = ExtResource("1_18b8q")
+id = "knight"
+max_level = 10
+experience_cost = 10
+texture_path = "res://assets/player/skins/knight.png"
+title = "Knight"
+description = "A proud knight with no king."

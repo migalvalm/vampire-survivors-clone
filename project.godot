@@ -25,9 +25,11 @@ boot_splash/minimum_display_time=2
 
 [autoload]
 
+SaveManager="*res://scenes/auto_load/save_manager.tscn"
 GameEvents="*res://scenes/auto_load/game_events.tscn"
 MusicPlayer="*res://scenes/auto_load/music_player.tscn"
 ScreenTransition="*res://scenes/auto_load/screen_transition.tscn"
+ClassManager="*res://scenes/auto_load/class_manager.tscn"
 MetaProgression="*res://scenes/auto_load/meta_progression.tscn"
 
 [debug]

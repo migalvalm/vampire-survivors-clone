@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="PlayerClass" load_steps=2 format=3 uid="uid://kmv5w3djwwgc"]
+
+[ext_resource type="Script" path="res://resources/player_classes/player_class.gd" id="1_e1vxo"]
+
+[resource]
+script = ExtResource("1_e1vxo")
+id = "archer"
+max_level = 10
+experience_cost = 10
+texture_path = "res://assets/player/skins/archer.png"
+title = "Archer"
+description = "Shoots arrows to the knees"

@@ -20,11 +20,11 @@ func play_in(delay: float = 0) -> void:
 
 func update_progress():
 	var current_quantity = 0
-	if MetaProgression.save_data['meta_upgrades'].has(upgrade.id):
-		current_quantity = MetaProgression.save_data['meta_upgrades'][upgrade.id]['quantity']
+	if SaveManager.save_data['player']['meta_upgrades'].has(upgrade.id):
+		current_quantity = SaveManager.save_data['player']['meta_upgrades'][upgrade.id]['quantity']
 	
 	var is_maxed: bool = current_quantity >= upgrade.max_quantity
-	var currency = MetaProgression.save_data['meta_upgrade_currency']
+	var currency = SaveManager.save_data['player']['meta_upgrade_currency']
 	var percent = min(currency / upgrade.experience_cost, 1)
 	
 	progress_bar.value = percent
@@ -43,8 +43,8 @@ func on_purchase_pressed():
 	if upgrade == null: return
 	MetaProgression.add_meta_upgrade(upgrade)
 	
-	MetaProgression.save_data['meta_upgrade_currency'] -= upgrade.experience_cost
-	MetaProgression.save()
+	SaveManager.save_data['player']['meta_upgrade_currency'] -= upgrade.experience_cost
+	SaveManager.save()
 	
 	get_tree().call_group('meta_upgrade_card', 'update_progress')
 	$AnimationPlayer.play('selected')
