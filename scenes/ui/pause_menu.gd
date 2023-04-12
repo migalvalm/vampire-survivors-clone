@@ -77,4 +77,6 @@ func on_quit_pressed() -> void:
 	ScreenTransition.transition_to_scene('res://scenes/ui/main_menu.tscn', true)
 
 func on_options_back_pressed(options_menu: Node):
+	ScreenTransition.transition()
+	await ScreenTransition.transitioned_halfway
 	options_menu.queue_free()

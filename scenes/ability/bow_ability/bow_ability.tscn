@@ -1,0 +1,62 @@
+[gd_scene load_steps=8 format=3 uid="uid://dwxwdw8hav14i"]
+
+[ext_resource type="Script" path="res://scenes/ability/bow_ability/bow_ability.gd" id="1_7lw4b"]
+[ext_resource type="Texture2D" uid="uid://c3tof7tvlyisr" path="res://scenes/ability/axe_ability/axe.png" id="2_m15pw"]
+[ext_resource type="PackedScene" uid="uid://bdfm633tkddth" path="res://scenes/component/hitbox_component.tscn" id="3_i85ty"]
+
+[sub_resource type="Animation" id="Animation_gxeip"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Texture:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_xxr5w"]
+resource_name = "default"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Texture:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.28319]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2uv6p"]
+_data = {
+"RESET": SubResource("Animation_gxeip"),
+"default": SubResource("Animation_xxr5w")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7n70q"]
+
+[node name="BowAbility" type="Node2D"]
+script = ExtResource("1_7lw4b")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "default"
+libraries = {
+"": SubResource("AnimationLibrary_2uv6p")
+}
+
+[node name="Texture" type="Sprite2D" parent="."]
+texture = ExtResource("2_m15pw")
+
+[node name="HitboxComponent" parent="." instance=ExtResource("3_i85ty")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+shape = SubResource("CircleShape2D_7n70q")

@@ -25,12 +25,14 @@ func on_class_pressed() -> void:
 	await ScreenTransition.transitioned_halfway
 	var class_menu_instance = class_menu_scene.instantiate()
 	add_child(class_menu_instance)
+	class_menu_instance.back_pressed.connect(on_class_closed.bind(class_menu_instance))
 
 func on_upgrade_pressed() -> void:
 	ScreenTransition.transition()
 	await ScreenTransition.transitioned_halfway
 	var meta_menu_instance = meta_menu_scene.instantiate()
 	add_child(meta_menu_instance)
+	meta_menu_instance.back_pressed.connect(on_upgrades_closed.bind(meta_menu_instance))
 
 func on_options_pressed() -> void:
 	ScreenTransition.transition()
@@ -45,6 +47,13 @@ func on_quit_pressed() -> void:
 	SaveManager.save()
 	get_tree().quit()
 
-
 func on_options_closed(options_instance: Node) -> void:
+	ScreenTransition.transition()
+	await ScreenTransition.transitioned_halfway
 	options_instance.queue_free()
+
+func on_upgrades_closed(upgrades_instance: Node) -> void:
+	upgrades_instance.queue_free()
+
+func on_class_closed(classes_instance: Node) -> void:
+	classes_instance.queue_free()

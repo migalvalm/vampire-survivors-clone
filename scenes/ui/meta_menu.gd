@@ -1,6 +1,9 @@
 extends CanvasLayer
 
+signal back_pressed
+
 @export var upgrades: Array[MetaUpgrade] = []
+
 var meta_upgrade_car_scene = preload('res://scenes/ui/meta_upgrade_card.tscn')
 
 @onready var grid_container = %GridContainer
@@ -16,3 +19,5 @@ func _ready():
 
 func on_back_pressed():
 	ScreenTransition.transition_to_scene('res://scenes/ui/main_menu.tscn')
+	await ScreenTransition.transitioned_halfway
+	back_pressed.emit()

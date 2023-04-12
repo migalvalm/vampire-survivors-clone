@@ -88,7 +88,7 @@ shader_parameter/transition_texture = ExtResource("2_54nru")
 
 [node name="ScreenTransition" type="CanvasLayer"]
 process_mode = 3
-layer = 5
+layer = 2
 script = ExtResource("1_ob3hp")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

@@ -1,11 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://cof03i0adxuup"]
+[gd_scene load_steps=7 format=3 uid="uid://tcw61u4fqbjr"]
 
 [ext_resource type="Script" path="res://scenes/ui/meta_menu.gd" id="1_c0kma"]
 [ext_resource type="Resource" uid="uid://guv3yqj5p71l" path="res://resources/meta_upgrades/experience_gain.tres" id="2_goko3"]
 [ext_resource type="TileSet" uid="uid://bi1cr8sj75vwr" path="res://resources/tileset.tres" id="2_jnxcx"]
 [ext_resource type="Resource" uid="uid://cjvhocw2prv3x" path="res://resources/meta_upgrades/health_regeneration.tres" id="3_1u7xu"]
 [ext_resource type="PackedScene" uid="uid://dvam7746e8bhi" path="res://scenes/ui/sound_button.tscn" id="3_vcb5r"]
-[ext_resource type="PackedScene" uid="uid://m34nua6w23vw" path="res://scenes/ui/vignette.tscn" id="4_53whs"]
+[ext_resource type="PackedScene" uid="uid://5hrwugxpssgm" path="res://scenes/ui/crtv.tscn" id="6_741w3"]
 
 [node name="MetaMenu" type="CanvasLayer"]
 layer = 2
@@ -61,5 +61,4 @@ auto_translate = false
 text = "Back
 "
 
-[node name="Vignette" parent="." instance=ExtResource("4_53whs")]
-layer = 3
+[node name="Vignette" parent="." instance=ExtResource("6_741w3")]

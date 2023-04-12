@@ -2,10 +2,7 @@ extends PanelContainer
 
 @onready var name_label: Label = %NameLabel
 @onready var description_label: Label = %DescriptionLabel
-@onready var progress_bar: ProgressBar = %ProgressBar
 @onready var select_button: Button = %SelectButton
-@onready var progress_label: Label = %ProgressLabel
-@onready var count_label: Label = %CountLabel
 @onready var texture: TextureRect = %Texture
 
 var player_class: PlayerClass

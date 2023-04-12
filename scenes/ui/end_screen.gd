@@ -23,8 +23,6 @@ func _ready() -> void:
 		Tween.TRANS_BACK
 	)
 	
-	
-	
 	get_tree().paused = true
 	continue_button.pressed.connect(on_continue_button_pressed)
 	quit_button.pressed.connect(on_quit_button_pressed)

@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://njwhokemv8kn"]
+
+[ext_resource type="Script" path="res://scenes/ability/bow_ability_controller/bow_ability_controller.gd" id="1_wpwbg"]
+
+[node name="BowAbilityController" type="Node"]
+script = ExtResource("1_wpwbg")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true

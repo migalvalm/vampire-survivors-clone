@@ -2,6 +2,8 @@ extends CanvasLayer
 
 var player_class_card_scene = preload('res://scenes/ui/player_class_card.tscn')
 
+signal back_pressed
+
 @onready var grid_container = %GridContainer
 @onready var back_button: Button = %BackButton
 
@@ -14,3 +16,5 @@ func _ready():
 
 func on_back_pressed():
 	ScreenTransition.transition_to_scene('res://scenes/ui/main_menu.tscn')
+	await ScreenTransition.transitioned_halfway
+	back_pressed.emit()

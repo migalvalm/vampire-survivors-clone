@@ -1,9 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://hfs6guncknvk"]
+[gd_scene load_steps=4 format=3 uid="uid://cx8t8l7v4nuw2"]
 
 [ext_resource type="TileSet" uid="uid://bi1cr8sj75vwr" path="res://resources/tileset.tres" id="1_0o5o1"]
 [ext_resource type="Script" path="res://scenes/ui/main_menu.gd" id="1_ksehv"]
 [ext_resource type="PackedScene" uid="uid://dvam7746e8bhi" path="res://scenes/ui/sound_button.tscn" id="2_1uuht"]
-[ext_resource type="PackedScene" uid="uid://m34nua6w23vw" path="res://scenes/ui/vignette.tscn" id="2_jcxfk"]
 
 [node name="MainMenu" type="CanvasLayer"]
 script = ExtResource("1_ksehv")
@@ -72,6 +71,3 @@ unique_name_in_owner = true
 layout_mode = 2
 text = "Quit
 "
-
-[node name="Vignette" parent="." instance=ExtResource("2_jcxfk")]
-layer = 2

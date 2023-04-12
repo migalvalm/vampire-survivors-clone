@@ -6,7 +6,7 @@ func set_player_skin(texture_path: String):
 
 func load_png(file) -> ImageTexture:
 	var png_file = FileAccess.open(file,FileAccess.READ)
-	if png_file.file_exists(file):
+	if FileAccess.file_exists(file):
 		var img = Image.new()
 		var err = img.load(file)
 		if err != OK:
