@@ -5,7 +5,7 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ibf35"]
 shader = ExtResource("2_0l3k1")
-shader_parameter/overlay = false
+shader_parameter/overlay = true
 shader_parameter/scanlines_opacity = 0.0
 shader_parameter/scanlines_width = 0.0
 shader_parameter/grille_opacity = 0.0
@@ -92,7 +92,6 @@ _data = {
 [node name="CRTV" type="CanvasLayer"]
 process_mode = 3
 layer = 3
-follow_viewport_enabled = true
 script = ExtResource("1_7a2cu")
 
 [node name="CRTVShader" type="ColorRect" parent="."]

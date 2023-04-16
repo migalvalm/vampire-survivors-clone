@@ -5,7 +5,7 @@ extends Node
 @onready var player: Player = %Player
 
 var pause_menu_scene = preload('res://scenes/ui/pause_menu.tscn')
-	
+
 func _ready():
 	player.health_component.died.connect(on_player_died)
 
