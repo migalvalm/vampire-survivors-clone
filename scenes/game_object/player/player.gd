@@ -3,6 +3,7 @@ class_name Player
 
 @export var arena_time_manager: ArenaTimeManager
 @export var hurtbox_area: Area2D
+@export var town_mode: bool = false
 
 @onready var player_texture: PlayerTexture = %PlayerTexture
 @onready var damage_interval_timer = $DamageIntervalTimer as Timer
@@ -20,7 +21,11 @@ var base_speed = 0
 func _ready() -> void:
 	player_texture.set_player_skin(ClassManager.current_class.texture_path)
 	
-	arena_time_manager.arena_difficulty_increased.connect(on_arena_difficulty_increased)
+	health_bar.visible = !town_mode
+	if not town_mode:
+		arena_time_manager.arena_difficulty_increased.connect(on_arena_difficulty_increased)
+		
+	
 	base_speed = velocity_component.max_speed
 	
 	hurtbox_area.body_entered.connect(on_body_entered)

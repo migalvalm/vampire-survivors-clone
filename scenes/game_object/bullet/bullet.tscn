@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://btnnuubhy7b"]
+
+[ext_resource type="Script" path="res://scenes/game_object/bullet/bullet.gd" id="1_6y5sh"]
+[ext_resource type="PackedScene" uid="uid://bdfm633tkddth" path="res://scenes/component/hitbox_component.tscn" id="1_mx6lh"]
+[ext_resource type="Texture2D" uid="uid://da75qjrrxox2k" path="res://scenes/game_object/bullet/arrow.png" id="1_s66hm"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6ktvb"]
+radius = 2.0
+
+[node name="Bullet" type="Node2D"]
+script = ExtResource("1_6y5sh")
+
+[node name="Visuals" type="Node2D" parent="."]
+
+[node name="Texture" type="Sprite2D" parent="Visuals"]
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("1_s66hm")
+
+[node name="HitboxComponent" parent="." instance=ExtResource("1_mx6lh")]
+
+[node name="Collision" type="CollisionShape2D" parent="HitboxComponent"]
+shape = SubResource("CircleShape2D_6ktvb")

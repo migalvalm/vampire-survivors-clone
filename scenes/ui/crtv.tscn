@@ -12,20 +12,20 @@ shader_parameter/grille_opacity = 0.0
 shader_parameter/resolution = Vector2(320, 180)
 shader_parameter/pixelate = false
 shader_parameter/roll = false
-shader_parameter/roll_speed = 8.0
-shader_parameter/roll_size = 0.5
-shader_parameter/roll_variation = 1.8
-shader_parameter/distort_intensity = 0.05
-shader_parameter/noise_opacity = 0.4
-shader_parameter/noise_speed = 2.0
+shader_parameter/roll_speed = 2.08165e-12
+shader_parameter/roll_size = 0.0
+shader_parameter/roll_variation = 0.1
+shader_parameter/distort_intensity = 0.0
+shader_parameter/noise_opacity = 1.0
+shader_parameter/noise_speed = 2.08165e-12
 shader_parameter/static_noise_intensity = 0.06
 shader_parameter/aberration = 4.75e-08
-shader_parameter/brightness = 1.1
+shader_parameter/brightness = 1.0
 shader_parameter/discolor = false
-shader_parameter/warp_amount = 0.3
+shader_parameter/warp_amount = 0.05
 shader_parameter/clip_warp = false
 shader_parameter/vignette_intensity = 0.4
-shader_parameter/vignette_opacity = 0.8
+shader_parameter/vignette_opacity = 1.0
 
 [sub_resource type="Animation" id="Animation_sms87"]
 length = 0.001
@@ -92,11 +92,11 @@ _data = {
 [node name="CRTV" type="CanvasLayer"]
 process_mode = 3
 layer = 3
+visible = false
 script = ExtResource("1_7a2cu")
 
 [node name="CRTVShader" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_ibf35")
-layout_direction = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

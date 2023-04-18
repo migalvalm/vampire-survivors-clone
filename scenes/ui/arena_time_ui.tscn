@@ -3,6 +3,8 @@
 [ext_resource type="Script" path="res://scenes/ui/arena_time_ui.gd" id="1_uuern"]
 
 [node name="ArenaTimeUI" type="CanvasLayer"]
+offset = Vector2(2.08165e-12, 10)
+transform = Transform2D(1, 0, 0, 1, 2.08165e-12, 10)
 script = ExtResource("1_uuern")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]

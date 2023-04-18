@@ -41,7 +41,7 @@ size_flags_vertical = 4
 layout_mode = 2
 theme_type_variation = &"BlueOutlineLabel"
 theme_override_font_sizes/font_size = 32
-text = "Dungeon Survivor"
+text = "Arena Survivor"
 
 [node name="PlayButton" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer" instance=ExtResource("2_1uuht")]
 unique_name_in_owner = true

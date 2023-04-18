@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://c4rnsmy856sr"]
+
+[ext_resource type="PackedScene" uid="uid://pwibcmv2na4x" path="res://scenes/component/shadow_component.tscn" id="1_qxecg"]
+[ext_resource type="Texture2D" uid="uid://b8aspyjloaoo3" path="res://scenes/game_object/meta_shop/meta_shop.png" id="2_r1afu"]
+[ext_resource type="PackedScene" uid="uid://yhrcfhj1x7wn" path="res://scenes/effects/ray_effect.tscn" id="3_s4ks0"]
+[ext_resource type="Shader" path="res://shaders/lightrays.gdshader" id="4_iepdk"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_oyaub"]
+shader = ExtResource("4_iepdk")
+shader_parameter/angle = 2.08165e-12
+shader_parameter/position = 2.08165e-12
+shader_parameter/spread = 0.7
+shader_parameter/cutoff = -0.228
+shader_parameter/falloff = 0.505
+shader_parameter/edge_fade = 0.701
+shader_parameter/speed = 30.0
+shader_parameter/ray1_density = 1.0
+shader_parameter/ray2_density = 1.0
+shader_parameter/ray2_intensity = 1.0
+shader_parameter/color = Color(1, 0.901961, 0.65098, 0.8)
+shader_parameter/hdr = false
+shader_parameter/seed = 20.0
+
+[node name="MetaShop" type="Node2D"]
+
+[node name="Visuals" type="Node2D" parent="."]
+
+[node name="ShadowComponent" parent="Visuals" instance=ExtResource("1_qxecg")]
+position = Vector2(0, 5)
+
+[node name="Texture" type="Sprite2D" parent="Visuals"]
+texture = ExtResource("2_r1afu")
+
+[node name="RayEffect" parent="." instance=ExtResource("3_s4ks0")]
+material = SubResource("ShaderMaterial_oyaub")
+position = Vector2(-1, -4)
+scale = Vector2(2, 5)
+is_owner = false

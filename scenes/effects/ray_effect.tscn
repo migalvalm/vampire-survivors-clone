@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://yhrcfhj1x7wn"]
+
+[ext_resource type="Shader" path="res://shaders/lightrays.gdshader" id="1_6gjr6"]
+[ext_resource type="Script" path="res://scenes/effects/ray_effect.gd" id="1_sj8h1"]
+[ext_resource type="Texture2D" uid="uid://bpbh6i70f3fwt" path="res://assets/tilemap/Tiles/tile_0000.png" id="2_4l3wk"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pc68o"]
+shader = ExtResource("1_6gjr6")
+shader_parameter/angle = -0.3
+shader_parameter/position = -0.2
+shader_parameter/spread = 0.5
+shader_parameter/cutoff = 0.1
+shader_parameter/falloff = 0.2
+shader_parameter/edge_fade = 0.15
+shader_parameter/speed = 1.0
+shader_parameter/ray1_density = 8.0
+shader_parameter/ray2_density = 30.0
+shader_parameter/ray2_intensity = 0.3
+shader_parameter/color = Color(1, 0.9, 0.65, 0.8)
+shader_parameter/hdr = false
+shader_parameter/seed = 5.0
+
+[node name="RayEffect" type="Sprite2D"]
+material = SubResource("ShaderMaterial_pc68o")
+texture = ExtResource("2_4l3wk")
+script = ExtResource("1_sj8h1")

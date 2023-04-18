@@ -1,9 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://tp5alshfvd0t"]
+[gd_scene load_steps=4 format=3 uid="uid://tp5alshfvd0t"]
 
 [ext_resource type="Script" path="res://scenes/ui/options_menu.gd" id="1_bblv6"]
 [ext_resource type="TileSet" uid="uid://bi1cr8sj75vwr" path="res://resources/tileset.tres" id="2_5c6t0"]
 [ext_resource type="PackedScene" uid="uid://dvam7746e8bhi" path="res://scenes/ui/sound_button.tscn" id="3_qnfvp"]
-[ext_resource type="PackedScene" uid="uid://5hrwugxpssgm" path="res://scenes/ui/crtv.tscn" id="4_xavfj"]
 
 [node name="OptionsMenu" type="CanvasLayer"]
 layer = 2
@@ -105,5 +104,3 @@ custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 size_flags_horizontal = 0
 text = "Back"
-
-[node name="Vignette" parent="." instance=ExtResource("4_xavfj")]

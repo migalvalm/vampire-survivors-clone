@@ -1,8 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://dgi3k728tdet3"]
+[gd_scene load_steps=4 format=3 uid="uid://dgi3k728tdet3"]
 
 [ext_resource type="Script" path="res://scenes/ui/class_menu.gd" id="1_mvffs"]
 [ext_resource type="TileSet" uid="uid://bi1cr8sj75vwr" path="res://resources/tileset.tres" id="4_ckjyd"]
-[ext_resource type="PackedScene" uid="uid://5hrwugxpssgm" path="res://scenes/ui/crtv.tscn" id="4_mhfpd"]
 [ext_resource type="PackedScene" uid="uid://dvam7746e8bhi" path="res://scenes/ui/sound_button.tscn" id="5_fouw5"]
 
 [node name="ClassMenu" type="CanvasLayer"]
@@ -57,5 +56,3 @@ size_flags_vertical = 0
 auto_translate = false
 text = "Back
 "
-
-[node name="Vignette" parent="." instance=ExtResource("4_mhfpd")]

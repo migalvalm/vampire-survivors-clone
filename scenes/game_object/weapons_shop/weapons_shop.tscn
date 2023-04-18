@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://d14d5epskmi2w"]
+
+[ext_resource type="PackedScene" uid="uid://pwibcmv2na4x" path="res://scenes/component/shadow_component.tscn" id="1_cdphm"]
+[ext_resource type="Texture2D" uid="uid://dmqq2abyoxd47" path="res://scenes/game_object/weapons_shop/weapons_shop.png" id="2_iav3d"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8sx68"]
+size = Vector2(9, 11)
+
+[node name="WeaponsShop" type="Node2D"]
+
+[node name="Visuals" type="Node2D" parent="."]
+
+[node name="ShadowComponent" parent="Visuals" instance=ExtResource("1_cdphm")]
+position = Vector2(0, 5)
+
+[node name="Texture" type="Sprite2D" parent="Visuals"]
+texture = ExtResource("2_iav3d")
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(-0.5, 1.5)
+collision_layer = 32
+collision_mask = 0
+
+[node name="Collision" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_8sx68")

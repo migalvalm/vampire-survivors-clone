@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://cr8q274mmw8lr"]
+
+[ext_resource type="PackedScene" uid="uid://pwibcmv2na4x" path="res://scenes/component/shadow_component.tscn" id="1_0q6ea"]
+[ext_resource type="Texture2D" uid="uid://bn387vba4rlde" path="res://scenes/game_object/storage/storage.png" id="2_ei3vn"]
+
+[node name="Storage" type="Node2D"]
+
+[node name="Visuals" type="Node2D" parent="."]
+
+[node name="ShadowComponent" parent="Visuals" instance=ExtResource("1_0q6ea")]
+position = Vector2(0, 5)
+
+[node name="Texture" type="Sprite2D" parent="Visuals"]
+texture = ExtResource("2_ei3vn")

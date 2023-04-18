@@ -1,10 +1,13 @@
 extends Camera2D
 
+@export var zoom_vector: Vector2 = Vector2.ONE
+
 const SMOOTHNESS = 20
 var target_position = Vector2.ZERO
 
 func _ready() -> void:
 	make_current()
+	zoom = zoom_vector
 
 func _process(delta: float) -> void:
 	acquire_target()
